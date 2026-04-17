@@ -178,11 +178,11 @@ onMounted(() => {
   .hero-bottom {
     flex-direction: column;
     gap: 1.5rem;
-    padding-bottom: 140px;
   }
 
   .hero-tagline {
     font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    margin-top: 2rem;
   }
 
   .quote {
