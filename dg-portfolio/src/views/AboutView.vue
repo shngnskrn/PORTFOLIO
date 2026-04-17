@@ -196,9 +196,8 @@ const skills = [
   }
 
   .links-block {
-    position: absolute;
-    top: calc(var(--nav-height) + 8rem);
-    left: 6vw;
+    position: static;
+    margin-top: 1.5rem;
   }
 
   .portrait-frame {
