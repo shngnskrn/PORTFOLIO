@@ -8,9 +8,9 @@
       </div>
       
       <div class="center">
-        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn ↗</a>
+        <a href="https://linkedin.com/in/dilshan-gunasekaran" target="_blank">LinkedIn ↗</a>
         <a href="/cv.pdf" target="_blank">View CV ↗</a>
-        <a href="https://youtube.com/yourprofile" target="_blank">Video CV ↗</a>
+        <a href="https://youtu.be/UHnFqMRC8Sc" target="_blank">Video CV ↗</a>
       </div>
       
       <div class="right">
@@ -130,11 +130,7 @@ const showFooter = ref(false)
 
 @media (max-width: 768px) {
   .footer-container {
-    height: 120px !important;
-    background: rgba(0, 0, 0, 0.3) !important;
-    backdrop-filter: blur(8px) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-    transition: none !important;
+    display: none !important;
   }
 
   .arrow-bounce {

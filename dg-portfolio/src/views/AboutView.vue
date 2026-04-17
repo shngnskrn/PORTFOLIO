@@ -2,7 +2,6 @@
   <main class="about-page">
     <div class="about-layout">
 
-      <!-- Left: portrait -->
       <div class="about-portrait">
         <div class="portrait-frame">
           <img src="../assets/images/portfolio-dg.svg" alt="Dilshan Gunasekaran" class="portrait-img" />
@@ -13,30 +12,29 @@
         </div>
       </div>
 
-      <!-- Right: text -->
       <div class="about-text">
         <h2 class="page-title">About Me</h2>
 
         <div class="about-bio">
           <p>
-            <!-- Replace with your own bio -->
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris.
+            I bridge the gap between high-end design and functional code. Originally from Sri Lanka and currently based in Denmark, I specialize in creating digital experiences using the Adobe Creative Suite, Figma, and modern web frameworks like Vue.js.
           </p>
           <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+            My background is built on real-world execution—freelancing for small businesses, leading community organizations, and managing high-pressure creative festivals. I focus on clean aesthetics, responsive code, and zero filler.
           </p>
         </div>
 
-        <!-- Skills -->
         <div class="skills-block">
           <h3 class="block-label">Core Skills</h3>
           <ul class="skills-list">
             <li v-for="skill in skills" :key="skill">{{ skill }}</li>
           </ul>
         </div>
+
+        <div class="links-block">
+          <a href="/cv.pdf" target="_blank" class="ext-link">View CV ↗</a>
+          <a href="https://youtu.be/UHnFqMRC8Sc" target="_blank" class="ext-link">Video CV ↗</a>
+        </div>        
       </div>
     </div>
   </main>
@@ -48,7 +46,7 @@ const skills = [
   'UI/UX Design & Prototyping',
   'Editorial & Print Design',
   'Web Design (HTML, CSS, Vue JS)',
-  'Adobe Creative Suite & Canva',
+  'Adobe Creative Suite',
   'Figma',
 ]
 </script>
