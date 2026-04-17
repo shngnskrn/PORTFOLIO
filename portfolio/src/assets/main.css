@@ -1,0 +1,61 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --gray-dim: #1a1a1a;
+  --gray-mid: #2e2e2e;
+  --gray-text: #888888;
+  --accent: #ffffff;
+  --font-script: 'Cadogen', cursive;
+  --font-body: 'Helvetica', 'Arial', sans-serif;
+  --font-nav: 'Helvetica', 'Arial', sans-serif;
+  --nav-height: 64px;
+}
+
+@font-face {
+  font-family: 'Cadogen';
+  src: url('/src/assets/fonts/cadogen.woff2') format('woff2');
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Page transition */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-16px);
+}
