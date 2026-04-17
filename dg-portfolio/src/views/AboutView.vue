@@ -17,10 +17,10 @@
 
         <div class="about-bio">
           <p>
-            I bridge the gap between high-end design and functional code. Originally from Sri Lanka and currently based in Denmark, I specialize in creating digital experiences using the Adobe Creative Suite, Figma, and modern web frameworks like Vue.js.
+            <!-- I bridge the gap between high-end design and functional code. Originally from Sri Lanka and currently based in Denmark, I specialize in creating digital experiences using the Adobe Creative Suite, Figma, and modern web frameworks like Vue.js. -->
           </p>
           <p>
-            My background is built on real-world execution—freelancing for small businesses, leading community organizations, and managing high-pressure creative festivals. I focus on clean aesthetics, responsive code, and zero filler.
+            <!-- My background is built on real-world execution—freelancing for small businesses, leading community organizations, and managing high-pressure creative festivals. I focus on clean aesthetics, responsive code, and zero filler. -->
           </p>
         </div>
 
