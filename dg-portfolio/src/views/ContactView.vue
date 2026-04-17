@@ -23,23 +23,87 @@
             <a href="https://facebook.com/aintnoshan" target="_blank" class="social-icon" title="Facebook">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
+            </div>
           </div>
         </div>
+        <div class="contact-right">
+          <form @submit.prevent="handleSubmit" class="contact-form">
+          <div class="form-group">
+            <input 
+              v-model="form.name" 
+              type="text" 
+              placeholder="Your Name" 
+              class="form-input"
+              required
+            />
+          </div>
+          
+          <div class="form-group">
+            <input 
+              v-model="form.email" 
+              type="email" 
+              placeholder="Your Email" 
+              class="form-input"
+              required
+            />
+          </div>
+          
+          <div class="form-group">
+            <textarea 
+              v-model="form.message" 
+              placeholder="Your Message" 
+              class="form-textarea"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+          
+          <button type="submit" class="form-submit" :disabled="loading">
+            {{ loading ? 'Sending...' : 'Send Message' }}
+          </button>
+          
+          <p v-if="submitted" class="success-message">Thank you! Your message has been sent.</p>
+        </form>
       </div>     
     </div>
   </main>
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
+import emailjs from '@emailjs/browser'
+
+onMounted(() => {
+  emailjs.init('NbNO3rLg8dvFpuv8h')
+})
 
 const form = reactive({ name: '', email: '', message: '' })
 const submitted = ref(false)
+const loading = ref(false)
 
-function handleSubmit() {
-  // Connect to your backend or email service here
-  console.log('Form submitted:', { ...form })
-  submitted.value = true
+async function handleSubmit() {
+  loading.value = true
+  try {
+    await emailjs.send(
+      'service_dg_portfolio',      // From EmailJS dashboard
+      'template_8wdi6pq',     // From EmailJS dashboard
+      {
+        from_name: form.name,
+        from_email: form.email,
+        message: form.message,
+        to_email: 'senthoorandilshan@gmail.com'
+      }
+    )
+    submitted.value = true
+    form.name = ''
+    form.email = ''
+    form.message = ''
+    setTimeout(() => { submitted.value = false }, 5000)
+  } catch (error) {
+    console.error('Failed to send email:', error)
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
@@ -53,7 +117,7 @@ function handleSubmit() {
 
 .contact-layout {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr minmax(350px, 1.2fr);
   gap: 8rem;
   align-items: stretch;
   flex: 1;
@@ -61,7 +125,7 @@ function handleSubmit() {
 
 .page-title {
   font-family: var(--font-script);
-  font-size: clamp(1.5rem, 5vw, 4rem);
+  font-size: clamp(1.8rem, 5.5vw, 4.5rem);
   font-weight: 400;
   line-height: 1.05;
   margin-bottom: 1.5rem;
@@ -145,6 +209,78 @@ a.detail-value:hover {
   color: var(--white);
 }
 
+.contact-right {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  min-width: 450px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input,
+.form-textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.form-submit {
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--white);
+  padding: 0.9rem 2rem;
+  font-family: var(--font-nav);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 0.5rem;
+}
+
+.form-submit:hover:not(:disabled) {
+  background: transparent;
+  color: var(--white);
+}
+
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.success-message {
+  color: rgba(100, 255, 150, 0.8);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .contact-layout {
@@ -154,6 +290,10 @@ a.detail-value:hover {
 
   .contact-page {
     padding-bottom: 140px;
+  }
+
+  .contact-form {
+    max-width: 100%;
   }
 }
 </style>
