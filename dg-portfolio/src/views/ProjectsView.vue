@@ -5,37 +5,77 @@
       <p class="page-sub">A selection of work across digital & print design</p>
     </header>
 
-    <div class="projects-grid">
-      <article
-        v-for="(project, i) in projects"
-        :key="project.id"
-        class="project-card"
-        :style="{ animationDelay: i * 0.08 + 's' }"
+    <div class="carousel-container">
+      <!-- Previous button -->
+      <button 
+        class="carousel-btn carousel-btn-prev" 
+        @click="goToPrev"
+        :disabled="currentSlide === 0"
       >
-        <div class="card-image">
-          <!-- Replace src with your actual project image -->
-          <div class="img-placeholder">
-            <span>{{ project.category }}</span>
-          </div>
-          <div class="card-overlay">
-            <span class="overlay-text">View Project</span>
-          </div>
+        ← Prev
+      </button>
+
+      <!-- Carousel -->
+      <div class="projects-carousel">
+        <div 
+          class="carousel-track"
+          :style="{ transform: `translateX(calc(-${currentSlide * (100 / projectsPerView)}%))` }"
+        >
+          <article
+            v-for="(project, i) in projects"
+            :key="project.id"
+            class="project-card"
+          >
+            <div class="card-image">
+              <div class="img-placeholder">
+                <span>{{ project.category }}</span>
+              </div>
+              <div class="card-overlay">
+                <span class="overlay-text">View Project</span>
+              </div>
+            </div>
+            <div class="card-info">
+              <span class="card-num">{{ String(i + 1).padStart(2, '0') }}</span>
+              <div>
+                <h3 class="card-title">{{ project.title }}</h3>
+                <p class="card-desc">{{ project.description }}</p>
+              </div>
+              <span class="card-year">{{ project.year }}</span>
+            </div>
+          </article>
         </div>
-        <div class="card-info">
-          <span class="card-num">{{ String(i + 1).padStart(2, '0') }}</span>
-          <div>
-            <h3 class="card-title">{{ project.title }}</h3>
-            <p class="card-desc">{{ project.description }}</p>
-          </div>
-          <span class="card-year">{{ project.year }}</span>
-        </div>
-      </article>
+      </div>
+
+      <!-- Next button -->
+      <button 
+        class="carousel-btn carousel-btn-next" 
+        @click="goToNext"
+        :disabled="currentSlide >= maxSlides"
+      >
+        Next →
+      </button>
+    </div>
+
+    <!-- Dot indicators -->
+    <div class="carousel-dots">
+      <button
+        v-for="i in totalDots"
+        :key="i"
+        class="dot"
+        :class="{ active: i - 1 === currentSlide }"
+        @click="goToSlide(i - 1)"
+      />
     </div>
   </main>
 </template>
 
 <script setup>
-// Replace these with your actual projects
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+
+const currentSlide = ref(0)
+const projectsPerView = ref(3)
+const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 0)
+
 const projects = [
   { id: 1, title: 'Project Title One',   description: 'Brand identity & visual design',  category: 'Branding',    year: '2025' },
   { id: 2, title: 'Project Title Two',   description: 'UI/UX design & prototyping',       category: 'UI/UX',       year: '2025' },
@@ -43,6 +83,41 @@ const projects = [
   { id: 4, title: 'Project Title Four',  description: 'Editorial layout & typography',    category: 'Print',       year: '2024' },
   { id: 5, title: 'Project Title Five',  description: 'Web design & development',         category: 'Web',         year: '2024' },
 ]
+
+// Update projectsPerView based on window width
+const updateProjectsPerView = () => {
+  if (window.innerWidth <= 600) {
+    projectsPerView.value = 1
+  } else if (window.innerWidth <= 768) {
+    projectsPerView.value = 2
+  } else {
+    projectsPerView.value = 3
+  }
+}
+
+onMounted(() => {
+  updateProjectsPerView()
+  window.addEventListener('resize', updateProjectsPerView)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateProjectsPerView)
+})
+
+const maxSlides = computed(() => Math.max(0, projects.length - projectsPerView.value))
+const totalDots = computed(() => maxSlides.value + 1)
+
+const goToPrev = () => {
+  if (currentSlide.value > 0) currentSlide.value--
+}
+
+const goToNext = () => {
+  if (currentSlide.value < maxSlides.value) currentSlide.value++
+}
+
+const goToSlide = (index) => {
+  currentSlide.value = index
+}
 </script>
 
 <style scoped>
@@ -74,21 +149,33 @@ const projects = [
   letter-spacing: 0.03em;
 }
 
-/* ── Grid ── */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-  gap: 2px;
+/* ── Carousel Container ── */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
-/* ── Card ── */
+/* ── Carousel ── */
+.projects-carousel {
+  flex: 1;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2px;
+  transition: transform 0.4s ease-out;
+}
+
 .project-card {
+  flex: 0 0 calc(33.333% - 2px);
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(255,255,255,0.07);
   overflow: hidden;
   cursor: pointer;
-  animation: fadeUp 0.6s ease both;
   transition: border-color 0.3s ease;
 }
 
@@ -96,9 +183,31 @@ const projects = [
   border-color: rgba(255,255,255,0.3);
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ── Carousel Buttons ── */
+.carousel-btn {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font-nav);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  color: rgba(255,255,255,1);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 /* ── Card Image ── */
@@ -124,9 +233,6 @@ const projects = [
   letter-spacing: 0.2em;
   color: rgba(255,255,255,0.2);
 }
-
-/* Replace img-placeholder with an actual img tag:
-   <img :src="project.image" :alt="project.title" class="card-img" /> */
 
 .card-overlay {
   position: absolute;
@@ -189,9 +295,62 @@ const projects = [
   flex-shrink: 0;
 }
 
+/* ── Dot Indicators ── */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: rgba(255,255,255,0.6);
+  width: 1.5rem;
+  border-radius: 0.3rem;
+}
+
+.dot:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    gap: 1rem;
+  }
+
+  .project-card {
+    flex: 0 0 calc(50% - 2px);
+  }
+
+  .carousel-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.6rem;
+  }
+}
+
 @media (max-width: 600px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
+  .carousel-container {
+    gap: 0.5rem;
+  }
+
+  .project-card {
+    flex: 0 0 100%;
+  }
+
+  .carousel-btn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.5rem;
   }
 }
 </style>
