@@ -17,10 +17,10 @@
 
         <div class="about-bio">
           <p>
-            <!-- I bridge the gap between high-end design and functional code. Originally from Sri Lanka and currently based in Denmark, I specialize in creating digital experiences using the Adobe Creative Suite, Figma, and modern web frameworks like Vue.js. -->
+            I bridge the gap between high-end design and functional code. Originally from Sri Lanka and currently based in Denmark, I specialize in creating digital experiences using the Adobe Creative Suite, Figma, and modern web frameworks like Vue.js.
           </p>
           <p>
-            <!-- My background is built on real-world execution—freelancing for small businesses, leading community organizations, and managing high-pressure creative festivals. I focus on clean aesthetics, responsive code, and zero filler. -->
+            My background is built on real-world execution—freelancing for small businesses, leading community organizations, and managing high-pressure creative festivals. I focus on clean aesthetics, responsive code, and zero filler.
           </p>
         </div>
 
@@ -34,9 +34,14 @@
         <div class="links-block">
           <a href="/cv.pdf" target="_blank" class="ext-link">View CV ↗</a>
           <a href="https://youtu.be/UHnFqMRC8Sc" target="_blank" class="ext-link">Video CV ↗</a>
+          <a href="https://linkedin.com/in/dilshan-gunasekaran" target="_blank" class="ext-link">LinkedIn ↗</a>
         </div>        
       </div>
     </div>
+    <div class="mobile-nav-buttons">
+      <router-link to="/projects" class="nav-button">View Projects</router-link>
+      <router-link to="/contact" class="nav-button">Contact me!</router-link>
+    </div>    
   </main>
 </template>
 
@@ -54,7 +59,7 @@ const skills = [
 <style scoped>
 .about-page {
   min-height: 100vh;
-  padding: calc(var(--nav-height) + 4rem) 6vw 1.5rem;
+  padding: calc(var(--nav-height) + 4rem) 6vw 4rem;
 }
 
 .about-layout {
@@ -71,7 +76,7 @@ const skills = [
   overflow: hidden;
   background: var(--gray-dim);
   margin-bottom: 1rem;
-  max-width: 420px;
+  max-width: 400px;
 }
 
 .portrait-img {
@@ -174,11 +179,14 @@ const skills = [
   color: var(--white);
 }
 
+.mobile-nav-buttons {
+  display: none;
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .about-page {
-    padding: calc(var(--nav-height) + 0.5rem) 6vw 1.5rem;
-    padding-bottom: 140px;
+    padding: calc(var(--nav-height) + 4rem) 6vw 4rem;
   }
 
   .about-layout {
@@ -187,21 +195,67 @@ const skills = [
     gap: 2rem;
   }
 
-  .portrait-label {
-    margin-bottom: 1.5rem;
+  .about-text {
+    display: contents;
   }
 
-  .about-text {
+  .page-title {
+    order: 1;
+    font-size: clamp(2rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+  }
+
+  .about-portrait {
     order: 2;
   }
 
   .links-block {
-    position: static;
-    margin-top: 1.5rem;
+    order: 3;
+    margin-top: 0;
+  }
+
+  .about-bio {
+    order: 4;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 2rem;
+  }
+
+  .skills-block {
+    order: 5;
+    margin-top: 0;
+  }
+
+  .portrait-label {
+    margin-bottom: 0;
   }
 
   .portrait-frame {
     max-width: 260px;
+  }
+
+  .mobile-nav-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-button {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    font-family: var(--font-nav);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+  }
+
+  .nav-button:hover {
+    background: var(--white);
+    color: var(--black);
   }
 }
 </style>

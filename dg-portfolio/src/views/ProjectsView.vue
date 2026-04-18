@@ -48,7 +48,7 @@ const projects = [
 <style scoped>
 .projects-page {
   min-height: 100vh;
-  padding: calc(var(--nav-height) + 4rem) 6vw 6rem;
+  padding: calc(var(--nav-height) + 4rem) 6vw 4rem;
 }
 
 /* ── Header ── */

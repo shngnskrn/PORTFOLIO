@@ -45,7 +45,7 @@ onMounted(() => {
   flex: 1;
   display: flex;
   align-items: flex-start;
-  padding: calc(var(--nav-height) + 2rem) 6vw 0;
+  padding: calc(var(--nav-height) + 4rem) 6vw 4rem;
 }
 
 .hero-name {
@@ -104,7 +104,7 @@ onMounted(() => {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 2.5rem 6vw 3rem;
+  padding: 2.5rem 6vw 4rem;
   gap: 2rem;
 }
 
@@ -170,12 +170,17 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
+  .hero-content {
+    padding: calc(var(--nav-height) + 4rem) 6vw 4rem;
+  }
+
   .line1,
   .line2 {
     font-size: clamp(1.8rem, 5vw, 3.5rem);
   }
 
   .hero-bottom {
+    padding: 2.5rem 6vw 4rem;
     flex-direction: column;
     gap: 1.5rem;
   }

@@ -72,6 +72,7 @@ const links = [
 @media (max-width: 600px) {
   .nav-links {
     gap: 1.5rem;
+    padding: 0;
   }
   .nav-link {
     font-size: 0.65rem;

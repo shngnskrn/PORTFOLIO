@@ -324,17 +324,25 @@ a.detail-value:hover {
   }
 
   .contact-page {
-    padding-bottom: 140px;
+    padding: calc(var(--nav-height) + 4rem) 6vw 4rem;
   }
 
   .contact-form {
     max-width: 100%;
   }
 
+  .contact-right {
+    justify-content: flex-start;
+  }
+
   .contact-details {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
+  }
+
+  .details-logo {
+    display: none;
   }
 
   .details-divider {
