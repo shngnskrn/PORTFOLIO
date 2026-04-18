@@ -125,6 +125,13 @@ async function handleSubmit() {
   flex: 1;
 }
 
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
 .contact-right {
   display: flex;
   align-items: flex-end;
