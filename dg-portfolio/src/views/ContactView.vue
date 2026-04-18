@@ -120,22 +120,16 @@ async function handleSubmit() {
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(350px, 1.2fr) 1fr;
-  gap: 8rem;
+  gap: 3rem;
   align-items: stretch;
   flex: 1;
-}
-
-.contact-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
 }
 
 .contact-right {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  padding-right: 4rem;
 }
 
 /* ── Typography ── */
@@ -163,8 +157,9 @@ async function handleSubmit() {
   display: flex;
   align-items: center;
   gap: 2rem;
-  max-width: 600px;
+  max-width: 500px;
 }
+
 
 .details-logo {
   flex-shrink: 0;
@@ -188,6 +183,7 @@ async function handleSubmit() {
   flex-direction: column;
   gap: 1.2rem;
   flex: 1;
+  min-width: 0;
 }
 
 .details-content .detail-row {
