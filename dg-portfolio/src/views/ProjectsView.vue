@@ -2,8 +2,9 @@
   <main class="projects-page">
     <header class="page-header">
       <h2 class="page-title">Projects</h2>
-      <p class="page-sub">A selection of work across digital & print design</p>
     </header>
+
+    <p class="page-sub">A selection of work across digital & print design</p>
 
     <div class="carousel-container">
       <!-- Previous button -->
@@ -128,11 +129,10 @@ const goToSlide = (index) => {
 
 /* ── Header ── */
 .page-header {
-  margin-bottom: 4rem;
+  margin-bottom: 1.5rem;  /* reduced from 4rem */
   border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;   /* increased from 2rem */
 }
-
 .page-title {
   font-family: var(--font-script);
   font-size: clamp(3.5rem, 8vw, 6rem);
@@ -147,6 +147,8 @@ const goToSlide = (index) => {
   color: var(--gray-text);
   font-size: 1rem;
   letter-spacing: 0.03em;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;     /* add this */
 }
 
 /* ── Carousel Container ── */
