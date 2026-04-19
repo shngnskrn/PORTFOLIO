@@ -30,7 +30,7 @@
           >
             <div class="card-image">
               <div class="img-placeholder">
-                <span>{{ project.category }}</span>
+                <span>{{ project.title }}</span>
               </div>
               <div class="card-overlay">
                 <span class="overlay-text">{{ project.isFolder ? 'Open Folder' : 'View Project' }}</span>
@@ -39,10 +39,9 @@
             <div class="card-info">
               <span class="card-num">{{ String(i + 1).padStart(2, '0') }}</span>
               <div>
-                <h3 class="card-title">{{ project.title }}</h3>
                 <p class="card-desc">{{ project.description }}</p>
               </div>
-              <span class="card-year">{{ project.year }}</span>
+              <span class="card-year">{{ project.category }}</span>
             </div>
           </article>
         </div>
@@ -153,11 +152,11 @@ const thumbnailPage = ref(0)
 const thumbnailsPerPage = 12
 
 const projects = [
-  { id: 1, title: 'Photography',        description: 'Picture collection',          category: 'Photography', year: '2022 - 2026', isFolder: true },
-  { id: 2, title: 'Project Title Two',   description: 'UI/UX design & prototyping',       category: 'UI/UX',       year: '2025' },
-  { id: 3, title: 'Project Title Three', description: 'Motion graphics & animation',      category: 'Motion',      year: '2024' },
-  { id: 4, title: 'Project Title Four',  description: 'Editorial layout & typography',    category: 'Print',       year: '2024' },
-  { id: 5, title: 'Project Title Five',  description: 'Web design & development',         category: 'Web',         year: '2024' },
+  { id: 1, title: 'Gallery', description: 'Recent Work', category: 'Photography', isFolder: true },
+  { id: 2, title: 'Project Title Two', description: 'UI/UX design & prototyping', category: 'UI/UX', },
+  { id: 3, title: 'Project Title Three', description: 'Motion graphics & animation', category: 'Motion', },
+  { id: 4, title: 'Project Title Four', description: 'Editorial layout & typography', category: 'Print', },
+  { id: 5, title: 'Project Title Five', description: 'Web design & development', category: 'Web', },
 ]
 
 // Gallery photos from public folder
@@ -245,13 +244,6 @@ const prevPhoto = () => {
     selectedImageIndex.value--
     selectedImage.value = galleryPhotos[selectedImageIndex.value]
     updateThumbnailPage()
-  }
-}
-
-// Update thumbnail page to show the page containing the current image
-const updateThumbnailPage = () => {
-  if (selectedImageIndex.value !== null) {
-    thumbnailPage.value = Math.floor(selectedImageIndex.value / thumbnailsPerPage)
   }
 }
 
@@ -390,7 +382,7 @@ const goToSlide = (index) => {
   position: relative;
   aspect-ratio: 16/10;
   overflow: hidden;
-  background: var(--gray-dim);
+  background: transparent;
 }
 
 .img-placeholder {
@@ -399,18 +391,14 @@ const goToSlide = (index) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0a0a0a;
-  background: url('../assets/images/folder.svg');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.7;
+  background: rgba(0, 0, 0, 0.005);
+  backdrop-filter: blur(12px);
 }
 
 .img-placeholder span {
   font-family: var(--font-script);
   font-size: 1.3rem;
-  color: rgba(255, 255, 255);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .card-overlay {
@@ -450,14 +438,6 @@ const goToSlide = (index) => {
   font-size: 0.65rem;
   color: rgba(255,255,255,0.2);
   flex-shrink: 0;
-}
-
-.card-title {
-  font-family: var(--font-body);
-  font-weight: 390;
-  font-size: 0.95rem;
-  letter-spacing: 0.10em;
-  margin-bottom: 0.15rem;
 }
 
 .card-desc {
