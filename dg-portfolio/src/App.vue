@@ -25,7 +25,7 @@ import Footer from './components/Footer.vue'
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.3;
+  opacity: 0.4;
   pointer-events: none;
 }
 </style>
