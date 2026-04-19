@@ -75,7 +75,7 @@
         <!-- THUMBNAIL VIEW -->
         <div v-if="!selectedImage" class="thumbnail-view">
           <div class="modal-header">
-            <h3>Gallery</h3>
+            <h3>{{ projects.find(p => p.id === activeProjectId)?.title }}</h3>
             <button class="close-btn" @click="closeModal">✕</button>
           </div>
 
@@ -125,7 +125,7 @@
             <button 
               class="nav-btn nav-next" 
               @click="nextPhoto"
-              :disabled="selectedImageIndex === galleryPhotos.length - 1"
+              :disabled="selectedImageIndex === projectImages[activeProjectId].length - 1"
             >
               →
             </button>
@@ -144,7 +144,7 @@ const currentSlide = ref(0)
 const projectsPerView = ref(3)
 const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 0)
 
-// Modal state
+//Popus thingy
 const showModal = ref(false)
 const selectedImage = ref(null)
 const selectedImageIndex = ref(null)
@@ -152,14 +152,13 @@ const thumbnailPage = ref(0)
 const thumbnailsPerPage = 12
 
 const projects = [
-  { id: 1, title: 'Gallery', description: 'Recent Work', category: 'Photography', isFolder: true },
-  { id: 2, title: 'Project Title Two', description: 'UI/UX design & prototyping', category: 'UI/UX', },
+  { id: 1, title: 'Gallery', description: 'Most of them were taken with my phone.', category: 'Photography', isFolder: true },
+  { id: 2, title: 'Visuals & Prints', description: 'Promo designs for print and social.', category: 'Graphic Design',  isFolder: true },
   { id: 3, title: 'Project Title Three', description: 'Motion graphics & animation', category: 'Motion', },
   { id: 4, title: 'Project Title Four', description: 'Editorial layout & typography', category: 'Print', },
   { id: 5, title: 'Project Title Five', description: 'Web design & development', category: 'Web', },
 ]
 
-// Gallery photos from public folder
 const galleryPhotos = [
   { id: 1, name: 'Bridge', thumbnail: '/photographs/bridge.webp', full: '/photographs/bridge.webp' },
   { id: 2, name: 'Building', thumbnail: '/photographs/building.webp', full: '/photographs/building.webp' },
@@ -193,9 +192,44 @@ const galleryPhotos = [
   { id: 30, name: 'Waterfall', thumbnail: '/photographs/waterfall.webp', full: '/photographs/waterfall.webp' },
 ]
 
+const designPhotos = [
+  { id: 1, name: 'Awareness Post 1', thumbnail: '/designs/awareness-post1.webp', full: '/designs/awareness-post1.webp' },
+  { id: 2, name: 'Awareness Post 2', thumbnail: '/designs/awareness-post2.webp', full: '/designs/awareness-post2.webp' },
+  { id: 3, name: 'Campaign Poster', thumbnail: '/designs/campaign-poster.webp', full: '/designs/campaign-poster.webp' },
+  { id: 4, name: 'Event Poster 1', thumbnail: '/designs/event1.webp', full: '/designs/event1.webp' },
+  { id: 5, name: 'Event Poster 2', thumbnail: '/designs/event2.webp', full: '/designs/event2.webp' },
+  { id: 6, name: 'Souvenir Poster', thumbnail: '/designs/heartbeat.webp', full: '/designs/heartbeat.webp' },
+  { id: 7, name: 'Member Post 1', thumbnail: '/designs/member-post1.webp', full: '/designs/member-post1.webp' },
+  { id: 8, name: 'Member Post 2', thumbnail: '/designs/member-post2.webp', full: '/designs/member-post2.webp' },
+  { id: 9, name: 'Movie Poster', thumbnail: '/designs/movie-poster1.webp', full: '/designs/movie-poster1.webp' },
+  { id: 10, name: 'Environmental Post 1', thumbnail: '/designs/phytoki1.webp', full: '/designs/phytoki1.webp' },
+  { id: 11, name: 'Environmental Post 2', thumbnail: '/designs/phytoki2.webp', full: '/designs/phytoki2.webp' },
+  { id: 12, name: 'Practice Post 1', thumbnail: '/designs/practice1.webp', full: '/designs/practice1.webp' },
+  { id: 13, name: 'Practice Post 2', thumbnail: '/designs/practice2.webp', full: '/designs/practice2.webp' },
+  { id: 14, name: 'President Elect Post 1', thumbnail: '/designs/pres-elect1.webp', full: '/designs/pres-elect1.webp' },
+  { id: 15, name: 'President Elect Post 2', thumbnail: '/designs/pres-elect2.webp', full: '/designs/pres-elect2.webp' },
+  { id: 16, name: 'President Elect Post 3', thumbnail: '/designs/pres-elect3.webp', full: '/designs/pres-elect3.webp' },
+  { id: 17, name: 'Report Cover 1', thumbnail: '/designs/report-cover1.webp', full: '/designs/report-cover1.webp' },
+  { id: 18, name: 'Report Cover 2', thumbnail: '/designs/report-cover2.webp', full: '/designs/report-cover2.webp' },
+  { id: 19, name: 'Riesling Dat Poster', thumbnail: '/designs/riesling.webp', full: '/designs/riesling.webp' },
+  { id: 20, name: 'Spotify Playlist Cover', thumbnail: '/designs/spotify1.webp', full: '/designs/spotify1.webp' },
+  { id: 21, name: 'Spotify Playlist Cover 2', thumbnail: '/designs/spotify2.webp', full: '/designs/spotify2.webp' },
+  { id: 22, name: 'Theater Poster 1', thumbnail: '/designs/theater-poster1.webp', full: '/designs/theater-poster1.webp' },
+  { id: 23, name: 'Theater Poster 2', thumbnail: '/designs/theater-poster2.webp', full: '/designs/theater-poster2.webp' },
+  { id: 24, name: 'Theater Poster 3', thumbnail: '/designs/theater-poster3.webp', full: '/designs/theater-poster3.webp' },
+]
+
+const projectImages = {
+  1: galleryPhotos,
+  2: designPhotos,
+}
+
+const activeProjectId = ref(null)
+
 // Handle card click
 const handleProjectClick = (project) => {
   if (project.isFolder) {
+    activeProjectId.value = project.id
     showModal.value = true
   }
 }
@@ -206,23 +240,23 @@ const closeModal = () => {
   selectedImage.value = null
   selectedImageIndex.value = null
   thumbnailPage.value = 0
+  activeProjectId.value = null
 }
 
 // Select image to view full size
 const selectImage = (photo) => {
   selectedImage.value = photo
-  selectedImageIndex.value = galleryPhotos.findIndex(p => p.id === photo.id)
-  // Update thumbnail page to show page containing this image
+  selectedImageIndex.value = projectImages[activeProjectId.value].findIndex(p => p.id === photo.id)
   updateThumbnailPage()
 }
 
 // Paginated thumbnails
 const paginatedThumbnails = computed(() => {
   const start = thumbnailPage.value * thumbnailsPerPage
-  return galleryPhotos.slice(start, start + thumbnailsPerPage)
+  return projectImages[activeProjectId.value].slice(start, start + thumbnailsPerPage)
 })
 
-const totalPages = computed(() => Math.ceil(galleryPhotos.length / thumbnailsPerPage))
+const totalPages = computed(() => Math.ceil(projectImages[activeProjectId.value].length / thumbnailsPerPage))
 const hasMorePhotos = computed(() => thumbnailPage.value < totalPages.value - 1)
 
 const loadMorePhotos = () => {
@@ -231,18 +265,20 @@ const loadMorePhotos = () => {
 
 // Navigate to next photo in full-size view
 const nextPhoto = () => {
-  if (selectedImageIndex.value !== null && selectedImageIndex.value < galleryPhotos.length - 1) {
+  const photos = projectImages[activeProjectId.value]
+  if (selectedImageIndex.value !== null && selectedImageIndex.value < photos.length - 1) {
     selectedImageIndex.value++
-    selectedImage.value = galleryPhotos[selectedImageIndex.value]
+    selectedImage.value = photos[selectedImageIndex.value]
     updateThumbnailPage()
   }
 }
 
 // Navigate to previous photo in full-size view
 const prevPhoto = () => {
+  const photos = projectImages[activeProjectId.value]
   if (selectedImageIndex.value !== null && selectedImageIndex.value > 0) {
     selectedImageIndex.value--
-    selectedImage.value = galleryPhotos[selectedImageIndex.value]
+    selectedImage.value = photos[selectedImageIndex.value]
     updateThumbnailPage()
   }
 }
@@ -280,6 +316,12 @@ const goToNext = () => {
 
 const goToSlide = (index) => {
   currentSlide.value = index
+}
+
+const updateThumbnailPage = () => {
+  if (selectedImageIndex.value !== null) {
+    thumbnailPage.value = Math.floor(selectedImageIndex.value / thumbnailsPerPage)
+  }
 }
 </script>
 
