@@ -147,6 +147,10 @@ async function handleSubmit() {
   line-height: 1.05;
   margin-bottom: 1.5rem;
   white-space: nowrap;
+  --glow-intensity: 0;
+  text-shadow: 
+    0 0 calc(10px * var(--glow-intensity)) 
+    rgba(255, 255, 255, calc(0.5 * var(--glow-intensity)));
 }
 
 .contact-intro {
