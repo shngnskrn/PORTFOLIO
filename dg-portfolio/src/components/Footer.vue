@@ -40,8 +40,8 @@ const showFooter = ref(false)
 
 .footer-container.active {
   height: 120px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.005);
+  backdrop-filter: blur(12px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
