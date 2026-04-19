@@ -96,6 +96,7 @@
 </template>
 
 <script setup>
+
 const education = [
   {
     year: '2024-2025',
@@ -206,11 +207,23 @@ const skills = [
 
 /* ── Title ── */
 .page-title {
+  --glow-intensity: 0;
   font-family: var(--font-script);
   font-size: clamp(1.5rem, 3vw, 3rem);
   font-weight: 200;
   line-height: 1;
   margin: 0;
+  text-shadow: 
+    0 0 calc(10px * var(--glow-intensity)) 
+    rgba(255, 255, 255, calc(0.5 * var(--glow-intensity)));
+}
+
+/* ── Page Title Glow ── */
+.page-title {
+  --glow-intensity: 0;
+  text-shadow: 
+    0 0 calc(10px * var(--glow-intensity)) 
+    rgba(255, 255, 255, calc(0.5 * var(--glow-intensity)));
 }
 
 /* ── Bio ── */
