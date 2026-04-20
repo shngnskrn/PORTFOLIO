@@ -139,6 +139,9 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import welcomeToBesbjergPDF from '../assets/pdf/welcome-to-esbjerg.pdf'
+import brothersLionheartPDF from '../assets/pdf/brothers-lionheart.pdf'
+import academyOfDesign from '../assets/pdf/aod.pdf'
 
 const currentSlide = ref(0)
 const projectsPerView = ref(3)
@@ -154,9 +157,9 @@ const thumbnailsPerPage = 12
 const projects = [
   { id: 1, title: 'Gallery', description: 'Most of them were taken with my phone.', category: 'Photography', isFolder: true },
   { id: 2, title: 'Visuals & Prints', description: 'Promo designs for print and social.', category: 'Graphic Design',  isFolder: true },
-  { id: 3, title: 'Project Title Three', description: 'Motion graphics & animation', category: 'Motion', },
-  { id: 4, title: 'Project Title Four', description: 'Editorial layout & typography', category: 'Print', },
-  { id: 5, title: 'Project Title Five', description: 'Web design & development', category: 'Web', },
+  { id: 3, title: 'Brothers Lionheart', description: 'Theatre Play Marketing Campaign', category: 'Group Project', url: brothersLionheartPDF, isFolder: false },
+  { id: 4, title: 'Academy of Design', description: 'World Creativity & Innovation Day', category: 'Marketing Campaign', url: academyOfDesign, isFolder: false },
+  { id: 5, title: 'Project Design', description: 'Brochure design for Esbjerg Centrum', category: 'Group Project', url: welcomeToBesbjergPDF, isFolder: false },
 ]
 
 const galleryPhotos = [
@@ -226,11 +229,12 @@ const projectImages = {
 
 const activeProjectId = ref(null)
 
-// Handle card click
 const handleProjectClick = (project) => {
   if (project.isFolder) {
     activeProjectId.value = project.id
     showModal.value = true
+  } else if (project.url) {
+    window.open(project.url, '_blank')
   }
 }
 
