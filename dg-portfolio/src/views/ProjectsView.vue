@@ -142,6 +142,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import welcomeToBesbjergPDF from '../assets/pdf/welcome-to-esbjerg.pdf'
 import brothersLionheartPDF from '../assets/pdf/brothers-lionheart.pdf'
 import academyOfDesign from '../assets/pdf/aod.pdf'
+import shortFilm from '../assets/pdf/short-film.pdf'
 
 const currentSlide = ref(0)
 const projectsPerView = ref(3)
@@ -158,8 +159,9 @@ const projects = [
   { id: 1, title: 'Gallery', description: 'Most of them were taken with my phone.', category: 'Photography', isFolder: true },
   { id: 2, title: 'Visuals & Prints', description: 'Promo designs for print and social.', category: 'Graphic Design',  isFolder: true },
   { id: 3, title: 'Brothers Lionheart', description: 'Theatre Play Marketing Campaign', category: 'Group Project', url: brothersLionheartPDF, isFolder: false },
-  { id: 4, title: 'Academy of Design', description: 'World Creativity & Innovation Day', category: 'Marketing Campaign', url: academyOfDesign, isFolder: false },
-  { id: 5, title: 'Project Design', description: 'Brochure design for Esbjerg Centrum', category: 'Group Project', url: welcomeToBesbjergPDF, isFolder: false },
+  { id: 4, title: 'Synthetic Dreams', description: 'Short film Project', category: 'Group Project', url: shortFilm, isFolder: false },
+  { id: 5, title: 'Academy of Design', description: 'World Creativity & Innovation Day', category: 'Marketing Campaign', url: academyOfDesign, isFolder: false },
+  { id: 6, title: 'Project Design', description: 'Brochure design for Esbjerg Centrum', category: 'Group Project', url: welcomeToBesbjergPDF, isFolder: false },
 ]
 
 const galleryPhotos = [
