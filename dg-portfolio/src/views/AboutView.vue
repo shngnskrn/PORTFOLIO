@@ -106,7 +106,7 @@ const education = [
   {
     year: '2025-Present',
     institution: 'Syddansk Erhvervsakademi',
-    program: 'Multi Media Design',
+    program: 'Multi-Media Design AP',
   },
 ]
 
