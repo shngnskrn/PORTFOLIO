@@ -19,7 +19,6 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const isHome = computed(() => route.path === '/')
 
 const links = [
   { to: '/',         label: 'HOME' },

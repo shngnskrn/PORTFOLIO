@@ -20,7 +20,7 @@
 
         <div class="about-bio">
           <p>
-            I bridge the gap between high-end design and functional code. Originally from Sri Lanka and currently based in Denmark, I specialize in creating digital experiences using the Adobe Creative Suite, Figma, and modern web frameworks like Vue.js.
+            I'm Dilshan (Shan), a Multimedia Design student specializing in Web Development and Digital Production at Syddansk Erhvervsakademi. Passionate about merging UI/UX design to build seamless digital experiences, and always exploring new creative fields like front-end development and branding.
           </p>
         </div>
 
@@ -81,9 +81,10 @@
 
         <!-- Links -->
         <div class="links-block">
+          <router-link to="/contact" class="ext-link">Contact ↗</router-link>  
           <a href="/cv.pdf" target="_blank" class="ext-link">View CV ↗</a>
           <a href="https://youtu.be/UHnFqMRC8Sc" target="_blank" class="ext-link">Video CV ↗</a>
-          <a href="https://linkedin.com/in/dilshan-gunasekaran" target="_blank" class="ext-link">LinkedIn ↗</a>
+          <a href="https://linkedin.com/in/dilshan-gunasekaran" target="_blank" class="ext-link">LinkedIn ↗</a>      
         </div>
       </div>
     </div>
@@ -229,6 +230,7 @@ const skills = [
 /* ── Bio ── */
 .about-bio p {
   font-family: var(--font-body);
+  font-style: italic;
   font-size: 0.9rem;
   line-height: 1.6;
   color: rgba(255,255,255,0.75);

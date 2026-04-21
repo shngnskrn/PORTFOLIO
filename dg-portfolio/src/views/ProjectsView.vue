@@ -339,7 +339,6 @@ const updateThumbnailPage = () => {
 
 /* ── Header ── */
 .page-header {
-  margin-bottom: 4rem;
   margin-bottom: 1.5rem;
   border-bottom: 1px solid rgba(255,255,255,0.1);
   padding-bottom: 2rem;
