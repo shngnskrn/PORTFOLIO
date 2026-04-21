@@ -18,8 +18,6 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
-const route = useRoute()
-
 const links = [
   { to: '/',         label: 'HOME' },
   { to: '/projects', label: 'PROJECTS' },
