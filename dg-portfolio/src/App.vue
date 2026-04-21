@@ -21,8 +21,8 @@ import Footer from './components/Footer.vue'
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vh;
+  height: 100vh;
   object-fit: cover;
   z-index: -1;
   opacity: 0.4;
