@@ -5,13 +5,13 @@
       <h1 class="hero-name">
         <span class="line1" :class="{ visible: visible }">Dilshan</span>
         <span class="line2" :class="{ visible: visible }">Gunasekaran</span>
-        <p class="hero-tagline" :class="{ visible: visible }">Multi-Media Design Student @ Syddansk Erhvervsakademi</p>
+        <p class="hero-tagline" :class="{ visible: visible }">Multimedia Designer — UI/UX, Web Development & Digital Production</p>
       </h1>
     </div>
 
     <!-- Bottom bar -->
     <div class="hero-bottom">
-      <span class="quote" :class="{ visible: visible }">I design digital experiences that make sense, look beautiful,<br> and tell a compelling story.</span>
+      <span class="quote" :class="{ visible: visible }">Creative enough to design it.<br>Technical enough to build it.</span>
       <router-link to="/contact" class="cta-btn" :class="{ visible: visible }">
         Let's Connect!
       </router-link>
