@@ -11,7 +11,7 @@
 
     <!-- Bottom bar -->
     <div class="hero-bottom">
-      <span class="quote" :class="{ visible: visible }">Creative enough to design it. Technical enough to build it.<br>Bridging the gap between visual aesthetics and front-end performance.</span>
+      <span class="quote" :class="{ visible: visible }">Creative enough to design it. Technical enough to build it.<br>Bridging visual design and front-end performance.</span>
       <router-link to="/contact" class="cta-btn" :class="{ visible: visible }">
         Let's Connect!
       </router-link>
