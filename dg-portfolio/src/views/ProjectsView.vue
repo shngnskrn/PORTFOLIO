@@ -86,7 +86,8 @@
               :src="photo.thumbnail"
               :alt="photo.name"
               class="thumbnail"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
               @click="selectImage(photo)"
             />
           </div>
@@ -121,7 +122,12 @@
             >
               ←
             </button>
-            <img :src="selectedImage.full" :alt="selectedImage.name" class="large-image" />
+            <img 
+              :src="selectedImage.full" 
+              :alt="selectedImage.name" 
+              class="large-image"
+              fetchpriority="high"
+            />
             <button 
               class="nav-btn nav-next" 
               @click="nextPhoto"
