@@ -14,7 +14,7 @@
       </div>
       
       <div class="right">
-        <p>© 2026 Your Name. All rights reserved.</p>
+        <p>© 2026 DG. All rights reserved.</p>
       </div>
     </div>
   </footer>
