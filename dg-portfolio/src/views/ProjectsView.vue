@@ -444,6 +444,7 @@ const updateThumbnailPage = () => {
 
 .img-placeholder span {
   font-family: var(--font-script);
+  text-align: center;
   font-size: 1.3rem;
   color: rgba(255, 255, 255, 0.75);
 }
