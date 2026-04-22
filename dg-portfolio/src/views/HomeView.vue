@@ -5,7 +5,7 @@
       <h1 class="hero-name">
         <span class="line1" :class="{ visible: visible }">Dilshan</span>
         <span class="line2" :class="{ visible: visible }">Gunasekaran</span>
-        <p class="hero-tagline" :class="{ visible: visible }">Multimedia Designer — UI/UX, Web Development & Digital Production</p>
+        <p class="hero-tagline" :class="{ visible: visible }">Multi-Media Designer | UI/UX, Web Development & Digital Production</p>
       </h1>
     </div>
 
