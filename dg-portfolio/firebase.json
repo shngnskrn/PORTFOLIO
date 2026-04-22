@@ -8,13 +8,10 @@
     ],
     "rewrites": [
       {
-        "source": "!/assets/**",
-        "destination": "/index.html"
-      },
-      {
-        "source": "!**/*.{png,jpg,jpeg,gif,webp,svg,pdf}",
+        "source": "^(?!/assets/)(?!.*\\.)(.*)$",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "cleanUrls": true
   }
 }
