@@ -10,6 +10,10 @@
       {
         "source": "!/assets/**",
         "destination": "/index.html"
+      },
+      {
+        "source": "!**/*.{png,jpg,jpeg,gif,webp,svg,pdf}",
+        "destination": "/index.html"
       }
     ]
   }
