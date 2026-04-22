@@ -40,10 +40,6 @@
               <span class="detail-label">Phone</span>
               <a href="tel:+1234567890" class="detail-value">+45 55 60 29 01</a>
             </div>
-            <div class="detail-row">
-              <span class="detail-label">CV</span>
-              <a href="/cv.pdf" target="_blank" class="detail-value">Download CV ↗</a>
-            </div>
             <div class="social-links">
             <a href="https://linkedin.com/in/dilshan-gunasekaran" target="_blank" class="social-icon" title="LinkedIn">
               <svg viewBox="0 0 24 24" fill="currentColor">
