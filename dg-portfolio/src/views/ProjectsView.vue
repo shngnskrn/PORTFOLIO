@@ -167,7 +167,7 @@ const projects = [
   { id: 3, title: 'Brothers Lionheart', description: 'Theatre Play Marketing Campaign', category: 'Group Project', url: brothersLionheartPDF, isFolder: false },
   { id: 4, title: 'Synthetic Dreams', description: 'Short film Project', category: 'Group Project', url: shortFilm, isFolder: false },
   { id: 5, title: 'Academy of Design', description: 'World Creativity & Innovation Day', category: 'Marketing Campaign', url: academyOfDesign, isFolder: false },
-  { id: 6, title: 'Project Design', description: 'Recipe Page Prototype', category: 'UI/UX Research & Design', url: recipePagePDF, isFolder: false },
+  { id: 6, title: 'Recipe Page', description: 'Recipe Page Prototype', category: 'UI/UX Research & Design', url: recipePagePDF, isFolder: false },
 ]
 
 const galleryPhotos = [
@@ -217,12 +217,12 @@ const designPhotos = [
   { id: 11, name: 'Environmental Post 2', thumbnail: '/designs/phytoki2.webp', full: '/designs/phytoki2.webp' },
   { id: 12, name: 'Practice Post 1', thumbnail: '/designs/practice1.webp', full: '/designs/practice1.webp' },
   { id: 13, name: 'Practice Post 2', thumbnail: '/designs/practice2.webp', full: '/designs/practice2.webp' },
-  { id: 14, name: 'President Elect Post 1', thumbnail: '/designs/pres-elect1.webp', full: '/designs/pres-elect1.webp' },
-  { id: 15, name: 'President Elect Post 2', thumbnail: '/designs/pres-elect2.webp', full: '/designs/pres-elect2.webp' },
-  { id: 16, name: 'President Elect Post 3', thumbnail: '/designs/pres-elect3.webp', full: '/designs/pres-elect3.webp' },
+  { id: 14, name: 'Brochure Poster 1', thumbnailPage: '/designs/brochure1.webp', full: '/designs/brochure1.webp' },
+  { id: 15, name: 'Brochure Poster 2', thumbnail: '/designs/brochure2.webp', full: '/designs/brochure2.webp' },
+  { id: 16, name: 'President Elect Post', thumbnail: '/designs/pres-elect2.webp', full: '/designs/pres-elect.webp' },
   { id: 17, name: 'Report Cover 1', thumbnail: '/designs/report-cover1.webp', full: '/designs/report-cover1.webp' },
   { id: 18, name: 'Report Cover 2', thumbnail: '/designs/report-cover2.webp', full: '/designs/report-cover2.webp' },
-  { id: 19, name: 'Riesling Dat Poster', thumbnail: '/designs/riesling.webp', full: '/designs/riesling.webp' },
+  { id: 19, name: 'Riesling Day Poster', thumbnail: '/designs/riesling.webp', full: '/designs/riesling.webp' },
   { id: 20, name: 'Spotify Playlist Cover', thumbnail: '/designs/spotify1.webp', full: '/designs/spotify1.webp' },
   { id: 21, name: 'Spotify Playlist Cover 2', thumbnail: '/designs/spotify2.webp', full: '/designs/spotify2.webp' },
   { id: 22, name: 'Theater Poster 1', thumbnail: '/designs/theater-poster1.webp', full: '/designs/theater-poster1.webp' },
