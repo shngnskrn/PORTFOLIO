@@ -145,7 +145,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import welcomeToBesbjergPDF from '../assets/pdf/welcome-to-esbjerg.pdf'
+import recipePagePDF from '../assets/pdf/recipe-page.pdf'
 import brothersLionheartPDF from '../assets/pdf/brothers-lionheart.pdf'
 import academyOfDesign from '../assets/pdf/aod.pdf'
 import shortFilm from '../assets/pdf/short-film.pdf'
@@ -167,7 +167,7 @@ const projects = [
   { id: 3, title: 'Brothers Lionheart', description: 'Theatre Play Marketing Campaign', category: 'Group Project', url: brothersLionheartPDF, isFolder: false },
   { id: 4, title: 'Synthetic Dreams', description: 'Short film Project', category: 'Group Project', url: shortFilm, isFolder: false },
   { id: 5, title: 'Academy of Design', description: 'World Creativity & Innovation Day', category: 'Marketing Campaign', url: academyOfDesign, isFolder: false },
-  { id: 6, title: 'Project Design', description: 'Brochure design for Esbjerg Centrum', category: 'Group Project', url: welcomeToBesbjergPDF, isFolder: false },
+  { id: 6, title: 'Project Design', description: 'Recipe Page Prototype', category: 'UI/UX Research & Design', url: recipePagePDF, isFolder: false },
 ]
 
 const galleryPhotos = [
